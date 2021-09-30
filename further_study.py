@@ -43,10 +43,8 @@ def custom_append(input_list, value):
         >>> notes == ['Do', 'Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do', 'Re']
         True
 
-    """
-    
+    """ 
     input_list[:] = input_list + [value]
-    #print(input_list)
     return
 
 
@@ -65,8 +63,8 @@ def custom_extend(input_list, second_list):
         True
 
     """
-
-    pass
+    input_list[:] = input_list[:] + second_list[:]
+    return 
 
 
 def custom_insert(input_list, index, value):
@@ -83,8 +81,9 @@ def custom_insert(input_list, index, value):
         True
 
     """
-
-    pass
+    # assume no insert to beginning or end of the list
+    input_list[:] = input_list[:index] + [value] + input_list[index:]
+    return
 
 
 def custom_remove(input_list, value):
@@ -103,7 +102,8 @@ def custom_remove(input_list, value):
 
     """
     
-    pass
+    input_list[:] = input_list[1:]
+    return
 
 
 def custom_pop(input_list):
@@ -163,8 +163,11 @@ def custom_count(input_list, value):
         2
 
     """
-
-    return 0
+    count = 0
+    for item in input_list:
+        if item == value:
+            count += 1
+    return count
 
 
 def custom_reverse(input_list):
@@ -183,7 +186,9 @@ def custom_reverse(input_list):
 
     """
 
-    pass
+     # [::-1] will reverse the list
+    input_list[:] = input_list[::-1]
+    return
 
 
 def custom_contains(input_list, value):
@@ -202,8 +207,11 @@ def custom_contains(input_list, value):
         True
 
     """
+    for item in input_list:
+        if item == value:
+            return True
 
-    return None
+    return False
 
 
 def custom_equality(some_list, another_list):
@@ -221,8 +229,14 @@ def custom_equality(some_list, another_list):
         False
 
     """
-
-    return None
+    i = 0
+    for item in some_list:
+        if str(some_list[i]) == str(another_list[i]):
+            #print(f"{some_list[i]} == {another_list[i]}")
+            i += 1
+        else:
+            return False
+    return True
 
 
 # This is the part were we actually run the doctests.
