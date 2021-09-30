@@ -13,11 +13,12 @@ def custom_len(input_list):
 
         >>> custom_len(['Do', 'Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do'])
         8
-
+    
     """
-
-    return 0
-
+    count = 0
+    for item in input_list:
+        count += 1
+    return count
 
 # For the next four exercises, you'll need to be clever and think about ways
 # to use list slice assignment.
@@ -43,8 +44,10 @@ def custom_append(input_list, value):
         True
 
     """
-
-    pass
+    
+    input_list[:] = input_list + [value]
+    #print(input_list)
+    return
 
 
 def custom_extend(input_list, second_list):
@@ -99,7 +102,7 @@ def custom_remove(input_list, value):
         True
 
     """
-
+    
     pass
 
 
@@ -118,8 +121,13 @@ def custom_pop(input_list):
         ['Jan', 'Feb']
 
     """
-
-    return None
+    # input_list[-1:] is March
+    # input_list[:-1] is Jan and Feb
+    pop_value = input_list[-1:]
+    input_list[:] = input_list[:-1]
+    #return input_list[:-1], input_list[-1:]
+    return pop_value
+    
 
 
 def custom_index(input_list, value):
@@ -220,3 +228,7 @@ if __name__ == "__main__":
     result = doctest.testmod()
     if result.failed == 0:
         print("ALL TESTS PASSED")
+    notes = ['Do', 'Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do']
+    print(notes)
+    custom_append(notes, 'Re')
+    print(notes)
