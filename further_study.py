@@ -126,7 +126,7 @@ def custom_pop(input_list):
     pop_value = input_list[-1:]
     input_list[:] = input_list[:-1]
     #return input_list[:-1], input_list[-1:]
-    return pop_value
+    return pop_value[0]
     
 
 
@@ -142,8 +142,13 @@ def custom_index(input_list, value):
         1
 
     """
-
-    return 0
+    #use for loop to iterate through input_list
+    #check if value matches index 0
+    index = 0 
+    for item in input_list:
+        if item == value:
+            return index
+        index += 1
 
 
 def custom_count(input_list, value):
@@ -228,7 +233,4 @@ if __name__ == "__main__":
     result = doctest.testmod()
     if result.failed == 0:
         print("ALL TESTS PASSED")
-    notes = ['Do', 'Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do']
-    print(notes)
-    custom_append(notes, 'Re')
-    print(notes)
+    
